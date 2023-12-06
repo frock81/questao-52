@@ -58,7 +58,7 @@ Somente a título de estudo, simulou-se também a possibilidade de reposição (
 
 ### Em Python
 
-Cem mil (100.000) iterações foram suficientes para o script em Python convergir:
+Foram usadas cem mil (100.000) iterações para o script em Python:
 
 ```bash
 $ time python simulacao.py
@@ -88,6 +88,8 @@ O script pode ser executado de maneira independente [neste link](https://www.onl
 
 ### Em Javascript
 
+Resultados usando Javascript:
+
 ```bash
 $ node simulacao.js
 Simulação com embaralhamento aleatório sem reposição
@@ -107,13 +109,20 @@ Probabilidade de a segunda bola ser preta: 0.2504057469735267
 Tempo de execução: 0.081 seconds
 ```
 
+Uma versão do script com 1500 iterações pode ser executada de maneira independente [neste link](https://playcode.io/1686643).
+
+
 ### Versão simplificada em Java
+
+Resultado usando um código simplificado em Java:
 
 ```bash
 [Running] cd "/home/fabio/Pessoal/Concursos-Publicos/Concursos-E-Provas/FGV/2023/Camara-dos-Deputados/recursos/questa-52-probabilidade/" && javac Simulacao.java && java Simulacao
 Probabilidade de a segunda bola ser preta: 0.33308904848832094
 Tempo de execução: 0.107 seconds
 ```
+
+Uma versão do código em Java pode ser executada de maneira independente [neste link](https://www.jdoodle.com/ia/Scr).
 
 
 ## Sobre o Embaralhamento das Urnas
