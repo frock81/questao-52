@@ -107,6 +107,14 @@ Probabilidade de a segunda bola ser preta: 0.2504057469735267
 Tempo de execução: 0.081 seconds
 ```
 
+### Versão simplificada em Java
+
+```bash
+[Running] cd "/home/fabio/Pessoal/Concursos-Publicos/Concursos-E-Provas/FGV/2023/Camara-dos-Deputados/recursos/questa-52-probabilidade/" && javac Simulacao.java && java Simulacao
+Probabilidade de a segunda bola ser preta: 0.33308904848832094
+Tempo de execução: 0.107 seconds
+```
+
 
 ## Sobre o Embaralhamento das Urnas
 
