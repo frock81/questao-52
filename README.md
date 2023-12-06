@@ -109,7 +109,7 @@ Probabilidade de a segunda bola ser preta: 0.2504057469735267
 Tempo de execução: 0.081 seconds
 ```
 
-Uma versão do script com 1500 iterações pode ser executada de maneira independente [neste link](https://playcode.io/1686643).
+Uma versão do script com menos iterações (1500 por conta do limite do site) pode ser executada de maneira independente [neste link](https://playcode.io/1686643).
 
 
 ### Versão simplificada em Java
@@ -136,12 +136,12 @@ As seções a seguir abordam algumas possíveis interpretações.
 
 ### Aleatoriedade na Escolha da Urna
 
-"Embaralhar as urnas" pode significar que a escolha da urna para a próxima retirada da bola é feita de forma completamente aleatória, sem qualquer viés ou padrão. Isso implicaria que não há como saber de qual urna a próxima bola será retirada, independentemente de qual urna foi usada anteriormente. Essa parece ser a interpretação mais razoável e será uma das consideradas nas simulações.
+"Embaralhar as urnas" pode significar que a escolha da urna para a próxima retirada da bola é feita de forma completamente aleatória, sem qualquer viés ou padrão. Isso implicaria que não há como saber de qual urna a próxima bola será retirada, independentemente de qual urna foi usada anteriormente. Essa parece ser a interpretação mais razoável e é a primeira considerada nas simulações.
 
 
 ### Redistribuição (Permutação) das Bolas entre as Urnas
 
-Uma interpretação mais complexa poderia ser a de que as bolas são redistribuídas entre as urnas de alguma forma antes da segunda retirada. No entanto, esta interpretação não altera as probabilidades envolvidas no problema, porquanto as urnas servem apenas como container. Essa interpretação será considerada e o resultado da simulação confirmará essa tese.
+Uma interpretação mais complexa poderia ser a de que as bolas são redistribuídas entre as urnas de alguma forma antes da segunda retirada. No entanto, esta interpretação não altera as probabilidades envolvidas no problema, porquanto as urnas servem apenas como container. Essa interpretação é considerada e o resultado da simulação confirma essa tese.
 
 
 ### Restauração das Condições Iniciais (Reposição)
@@ -149,6 +149,8 @@ Uma interpretação mais complexa poderia ser a de que as bolas são redistribu�
 Pode ser entendido que após a retirada da primeira bola, as urnas são reconfiguradas para seu estado inicial (por exemplo, se a primeira bola veio da Urna 2, uma nova bola branca é colocada de volta nela), garantindo que a segunda retirada seja feita sob as mesmas condições iniciais.
 
 A questão não menciona reposição. A interpretação mais razoável é a de entender que não há reposição, pois se houvesse reposição o segundo evento seria independente do primeiro, não impactando a retirada da primeira bola ou qualquer embaralhamento.
+
+Embora falte razão nesse cenário, ele foi considerado nas últimas simulações a título de estudo.
 
 
 ### Troca Física das Posições das Urnas
