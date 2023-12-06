@@ -24,22 +24,43 @@ O gabarito preliminar da questão foi a letra "(A) 3/8". Como será demonstrado
 
 ## Espaço amostral
 
-| bola-1       | bola-2       |
-|--------------|--------------|
-| branca_11    | branca_12    |
-| branca_11    | branca_21    |
-| branca_11    | preta        |
-| branca_12    | branca_11    |
-| branca_12    | branca_21    |
-| branca_12    | preta        |
-| branca_21    | branca_11    |
-| branca_21    | branca_12    |
-| branca_21    | preta        |
+| bola-1             | bola-2             |
+|--------------------|--------------------|
+| branca_urna1_bola1 | branca_urna1_bola2 |
+| branca_urna1_bola1 | branca_urna2_bola1 |
+| branca_urna1_bola1 | preta              |
+| branca_urna1_bola2 | branca_urna1_bola1 |
+| branca_urna1_bola2 | branca_urna2_bola1 |
+| branca_urna1_bola2 | preta              |
+| branca_urna2_bola1 | branca_urna1_bola1 |
+| branca_urna2_bola1 | branca_urna1_bola2 |
+| branca_urna2_bola1 | preta              |
 
-É fácil perceber que existem somente 9 possibilidades e que 3 delas correspondem a bolas pretas. Portanto a probabilidade é de 3/9, equivalente a 1/3. Portanto
+É fácil perceber que existem somente 9 possibilidades e que 3 delas correspondem a bolas pretas. Portanto a probabilidade é de 3/9, equivalente a 1/3.
+
+## Resultados da Simulação
+
+Do script em Python com 1.000.000 de iterações:
+
+```
+$ time python simulacao.py
+Simulação com embaralhamento aleatório
+Probabilidade de a segunda bola ser preta: 0.333032751021802
+Tempo de execução: 7.2517607800109545 seconds
+
+Simulação com embaralhamento redistribuído
+Probabilidade de a segunda bola ser preta: 0.3335082994811873
+Tempo de execução: 10.43669317101012 seconds
+
+real    0m17,753s
+user    0m17,719s
+sys     0m0,034s
+```
+
+Percebe-se que o valor converge para 0.33, equivalente a 1/3.
 
 
-## Embaralhar Urnas
+## Sobre o Embaralhamento das Urnas
 
 A etapa de "embaralhar as urnas" no problema apresentado pode ter múltiplas interpretações, dependendo de como se entende o ato de embaralhar no contexto.
 
@@ -53,7 +74,7 @@ As seções a seguir abordam algumas possíveis interpretações.
 "Embaralhar as urnas" pode significar que a escolha da urna para a próxima retirada da bola é feita de forma completamente aleatória, sem qualquer viés ou padrão. Isso implicaria que não há como saber de qual urna a próxima bola será retirada, independentemente de qual urna foi usada anteriormente. Essa parece ser a interpretação mais razoável e será uma das consideradas nas simulações.
 
 
-### Permutação (Redistribuição) das Bolas entre as Urnas
+### Redistribuição (Permutação) das Bolas entre as Urnas
 
 Uma interpretação mais complexa poderia ser a de que as bolas são redistribuídas entre as urnas de alguma forma antes da segunda retirada. No entanto, esta interpretação não altera as probabilidades envolvidas no problema, porquanto as urnas servem apenas como container. Essa interpretação será considerada e o resultado da simulação confirmará essa tese.
 
@@ -72,6 +93,3 @@ Pode-se interpretar que as urnas são fisicamente movidas ou rearranjadas. Isso 
 ### Simbólico, Sem Efeito Prático
 
 "Embaralhar as urnas" pode ser simplesmente uma frase para indicar uma pausa ou separação entre os eventos de retirada das bolas, sem ter um efeito prático ou literal no problema. Isso não altera as probabilidades.
-
-
-## Resultados da Simulação
