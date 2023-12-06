@@ -53,12 +53,14 @@ O código fonte está disponível [neste repositório](https://github.com/frock8
 
 Percebe-se que o valor converge para 0.33, equivalente a 1/3 da alternativa "D" e não da alternativa "A" (3/8).
 
+Somente a título de estudo, simulou-se também a possibilidade de reposição (0.25, 25%), a qual não faz sentido no contexto da questão, conforme explicado adiante em seção própria. Perceba que o resultado aponta para a independência entre os eventos nesse cenário.
+
 
 ### Em Python
 
 Cem mil (100.000) iterações foram suficientes para o script em Python convergir:
 
-```
+```bash
 $ time python simulacao.py
 Simulação com embaralhamento aleatório sem reposição
 Probabilidade de a segunda bola ser preta: 0.33328878970507664
@@ -82,6 +84,28 @@ sys     0m0,026s
 ```
 
 O script pode ser executado de maneira independente [neste link](https://www.online-python.com/fBFdNO5weh).
+
+
+### Em Javascript
+
+```bash
+$ node simulacao.js
+Simulação com embaralhamento aleatório sem reposição
+Probabilidade de a segunda bola ser preta: 0.3340281953631322
+Tempo de execução: 0.057 seconds
+
+Simulação com embaralhamento redistribuído sem reposição
+Probabilidade de a segunda bola ser preta: 0.33413304543697603
+Tempo de execução: 0.084 seconds
+
+Simulação com embaralhamento aleatório com reposição
+Probabilidade de a segunda bola ser preta: 0.24883584006851148
+Tempo de execução: 0.047 seconds
+
+Simulação com embaralhamento redistribuído com reposição
+Probabilidade de a segunda bola ser preta: 0.2504057469735267
+Tempo de execução: 0.081 seconds
+```
 
 
 ## Sobre o Embaralhamento das Urnas
