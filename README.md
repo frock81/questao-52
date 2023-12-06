@@ -40,7 +40,7 @@ O gabarito preliminar da questão foi a letra "(A) 3/8". Como será demonstrado
 
 ## Resultados da Simulação
 
-Do script em Python com 1.000.000 de iterações:
+Cem mil (100.000) iterações foram suficientes para o script em Python convergir:
 
 ```
 $ time python simulacao.py
@@ -84,6 +84,7 @@ Uma interpretação mais complexa poderia ser a de que as bolas são redistribu�
 Pode ser entendido que após a retirada da primeira bola, as urnas são reconfiguradas para seu estado inicial (por exemplo, se a primeira bola veio da Urna 2, uma nova bola branca é colocada de volta nela), garantindo que a segunda retirada seja feita sob as mesmas condições iniciais.
 
 A questão não menciona reposição. A interpretação mais razoável é a de entender que não há reposição, pois se houvesse reposição o segundo evento seria independente do primeiro, não impactando a retirada da primeira bola ou qualquer embaralhamento.
+
 
 ### Troca Física das Posições das Urnas
 

@@ -5,7 +5,7 @@ import random, time
 from enum import Enum
 from typing import Optional, List, Callable
 
-NUMERO_ITERACOES = 1_000_000
+NUMERO_ITERACOES = 100_000
 
 class Cor(Enum):
     BRANCA = 0
