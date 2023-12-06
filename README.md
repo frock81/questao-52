@@ -2,6 +2,7 @@
 
 Questão número 52 da disciplina de Matemática da prova de conhecimentos gerais para o cargo de Analista Legislativo ‒ Informática Legislativa do concurso da Câmara dos Deputados.
 
+
 ## Introdução
 
 A Questão Propriamente Dita:
@@ -73,7 +74,11 @@ user    0m3,781s
 sys     0m0,026s
 ```
 
-Percebe-se que o valor converge para 0.33, equivalente a 1/3.
+Percebe-se que o valor converge para 0.33, equivalente a 1/3 da alternativa "D" e não da alternativa "A" (3/8).
+
+O script pode ser executado de maneira independente [neste link](https://www.online-python.com/fBFdNO5weh).
+
+O código fonte está disponível [neste repositório](https://github.com/frock81/questao-52) no Github.
 
 
 ## Sobre o Embaralhamento das Urnas
