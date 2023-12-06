@@ -7,16 +7,22 @@ Questão número 52 da disciplina de Matemática da prova de conhecimentos gerai
 A Questão Propriamente Dita:
 
 > 52
+>
 > Uma urna contém duas bolas brancas. Uma segunda urna contém
 > uma bola branca e outra preta. Retira-se uma bola branca,
 > desconhecendo-se de qual urna ela saiu. A seguir, as urnas são
 > embaralhadas e uma segunda bola é retirada.
+>
 > A probabilidade de que a segunda bola seja preta é igual a
 >
 > (A) 3/8.
+>
 > (B) 2/3.
+>
 > (C) 1/6
+>
 > (D) 1/3.
+> 
 > (E) 1/4.
 
 O gabarito preliminar da questão foi a letra "(A) 3/8". Como será demonstrado
