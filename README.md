@@ -1,6 +1,6 @@
 # Questão 52
 
-Questão número 52 da disciplina de Matemática da prova de conhecimentos gerais para o cargo de Analista Legislativo ‒ Informática Legislativa do concurso da Câmara dos Deputados.
+Questão número 52 da disciplina de Matemática da prova Tipo-2 (verde) de conhecimentos gerais para o cargo de Analista Legislativo ‒ Informática Legislativa do concurso da Câmara dos Deputados.
 
 
 ## Introdução
@@ -47,7 +47,14 @@ A demonstração será feita pela análise do espaço amostral e por meio de sim
 
 É fácil perceber que existem somente 9 possibilidades e que 3 delas correspondem a bolas pretas. Portanto a probabilidade é de 3/9, equivalente a 1/3.
 
-## Resultados da Simulação
+## Resultados das Simulações
+
+O código fonte está disponível [neste repositório](https://github.com/frock81/questao-52) no Github.
+
+Percebe-se que o valor converge para 0.33, equivalente a 1/3 da alternativa "D" e não da alternativa "A" (3/8).
+
+
+### Em Python
 
 Cem mil (100.000) iterações foram suficientes para o script em Python convergir:
 
@@ -74,11 +81,7 @@ user    0m3,781s
 sys     0m0,026s
 ```
 
-Percebe-se que o valor converge para 0.33, equivalente a 1/3 da alternativa "D" e não da alternativa "A" (3/8).
-
 O script pode ser executado de maneira independente [neste link](https://www.online-python.com/fBFdNO5weh).
-
-O código fonte está disponível [neste repositório](https://github.com/frock81/questao-52) no Github.
 
 
 ## Sobre o Embaralhamento das Urnas

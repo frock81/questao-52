@@ -80,10 +80,10 @@ def criar_urnas() -> List[Urna]:
     urna1_bola_branca2 = criar_bola_branca()
     urna2_bola_branca = criar_bola_branca()
     urna2_bola_preta = criar_bola_preta()
-    # Separar as bolas
+    # Separação as bolas
     bolas_urna1 = [urna1_bola_branca1, urna1_bola_branca2]
     bolas_urna2 = [urna2_bola_branca, urna2_bola_preta]
-    # Cria as urnas
+    # Criação as urnas
     urna1 = criar_urna(bolas_urna1)
     urna2 = criar_urna(bolas_urna2)
     return [urna1, urna2]
@@ -109,12 +109,28 @@ def simular_retirada_bola(urnas: List[Urna]) -> Tuple[Bola, Urna]:
 
 
 def embaralhamento_aleatorio(urnas: List[Urna]) -> List[Urna]:
+    """Embaralha aleatoriamente as urnas.
+
+    "Embaralhar as urnas" pode significar que a escolha da urna
+    para a próxima retirada da bola é feita de forma completamente
+    aleatória, sem qualquer viés ou padrão. Isso implicaria que
+    não há como saber de qual urna a próxima bola será retirada,
+    independentemente de qual urna foi usada anteriormente. Essa
+    parece ser a interpretação mais razoável"""
     # O método shuffle embaralha a lista de urnas inplace.
     random.shuffle(urnas)
     return urnas
 
 
 def embaralhamento_redistribuido(urnas: List[Urna]) -> List[Urna]:
+    """Redistribui as bolas nas urnas
+
+    Uma interpretação mais complexa poderia ser a de que as
+    bolas são redistribuídas entre as urnas de alguma forma
+    antes da segunda retirada. No entanto, esta interpretação
+    não altera as probabilidades envolvidas no problema, porquanto
+    as urnas servem apenas como container.
+    """
     bolas = []
     for urna in urnas:
         while (bola:= urna.retirar_bola()) is not None:
@@ -181,6 +197,18 @@ if __name__ == "__main__":
     simular(numero_iteracoes=NUMERO_ITERACOES,
             funcao_embaralhamento=embaralhamento_redistribuido)
 
+    # Pode ser entendido que após a retirada da primeira bola,
+    # as urnas são reconfiguradas para seu estado inicial
+    # (por exemplo, se a primeira bola veio da Urna 2, uma
+    # nova bola branca é colocada de volta nela), garantindo
+    # que a segunda retirada seja feita sob as mesmas condições
+    # iniciais.
+    #
+    # A questão não menciona reposição. A interpretação mais
+    # razoável é a de entender que não há reposição, pois, se
+    # houvesse reposição, o segundo evento seria independente
+    # do primeiro, não impactando a retirada da primeira bola
+    # ou qualquer embaralhamento.
     print("\nSimulação com embaralhamento aleatório com reposição")
     simular(numero_iteracoes=NUMERO_ITERACOES,
             funcao_embaralhamento=embaralhamento_aleatorio,
