@@ -99,9 +99,10 @@ def simular_evento2(urnas: List[Urna]) -> Bola:
 def simular_eventos(contador: Contador) -> None:
     urnas = criar_urnas()
     primeira_bola_retirada = simular_evento1(urnas)
-    # A primeira bola retirada é branca, conforme enunciado.
+    # A primeira bola retirada é branca conforme enunciado.
     # Portanto, dado que a primeira bola é branca, se a bola
-    # retirada for preta, ela não deve ser considerada.
+    # retirada for preta, ela não deve ser considerada, pois
+    # não faz parte do nosso espaço amostral.
     if primeira_bola_retirada.cor == Cor.PRETA:
         return
     segunda_bola_retirada = simular_evento2(urnas)
