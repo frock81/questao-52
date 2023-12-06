@@ -3,7 +3,7 @@
 
 import random, time
 from enum import Enum
-from typing import Optional, List, Callable
+from typing import Optional, List, Callable, Tuple
 
 NUMERO_ITERACOES = 100_000
 
@@ -83,9 +83,8 @@ def criar_urnas() -> List[Urna]:
     # Separar as bolas
     bolas_urna1 = [urna1_bola_branca1, urna1_bola_branca2]
     bolas_urna2 = [urna2_bola_branca, urna2_bola_preta]
-    # Cria a urna um com duas bolas brancas
+    # Cria as urnas
     urna1 = criar_urna(bolas_urna1)
-    # Cria a urna dois com uma bola branca e uma preta
     urna2 = criar_urna(bolas_urna2)
     return [urna1, urna2]
 
@@ -95,20 +94,22 @@ def filtrar_urnas_sem_bolas(urnas: List[Urna]) -> List[Urna]:
 
 
 def escolher_urna_aleatoria_com_bola(urnas: List[Urna]) -> Urna:
-    urnas_com_bolas = filtrar_urnas_sem_bolas(urnas)
-    urna_escolhida = escolher_urna_aleatoria(urnas)
-    return urna_escolhida
-
-
-def simular_retirada_bola(urnas: List[Urna]) -> Bola:
     # A depender do método de embaralhamento, pode ser que
     # uma urna não tenha bolas. Portanto, é necessário
     # garantir que a urna escolhida tenha bolas.
+    urnas_com_bolas = filtrar_urnas_sem_bolas(urnas)
+    urna_escolhida = escolher_urna_aleatoria(urnas_com_bolas)
+    return urna_escolhida
+
+
+def simular_retirada_bola(urnas: List[Urna]) -> Tuple[Bola, Urna]:
     urna_escolhida = escolher_urna_aleatoria_com_bola(urnas)
-    return urna_escolhida.retirar_bola()
+    bola_escolhida = urna_escolhida.retirar_bola()
+    return bola_escolhida, urna_escolhida
 
 
 def embaralhamento_aleatorio(urnas: List[Urna]) -> List[Urna]:
+    # O método shuffle embaralha a lista de urnas inplace.
     random.shuffle(urnas)
     return urnas
 
@@ -116,10 +117,8 @@ def embaralhamento_aleatorio(urnas: List[Urna]) -> List[Urna]:
 def embaralhamento_redistribuido(urnas: List[Urna]) -> List[Urna]:
     bolas = []
     for urna in urnas:
-        bola = urna.retirar_bola()
-        while(bola is not None):
+        while (bola:= urna.retirar_bola()) is not None:
             bolas.append(bola)
-            bola = urna.retirar_bola()
     random.shuffle(bolas)
     for bola in bolas:
         urna = random.choice(urnas)
@@ -133,32 +132,40 @@ def embaralhar_urnas(
     return funcao_embaralhamento(urnas)
 
 
-def simular_eventos(contador: Contador, funcao_embaralhamento) -> None:
+def simular_eventos(contador: Contador,
+                    funcao_embaralhamento: Callable[[List[Urna]], Urna],
+                    reposicao: bool = False) -> None:
     urnas = criar_urnas()
-    primeira_bola_retirada = simular_retirada_bola(urnas)
+    primeira_bola_retirada, primeira_urna_escolhida = simular_retirada_bola(urnas)
     # A primeira bola retirada é branca conforme enunciado.
     # Portanto, dado que a primeira bola é branca, se a bola
     # retirada for preta, ela não deve ser considerada, pois
     # não faz parte do nosso espaço amostral.
     if primeira_bola_retirada.cor == Cor.PRETA:
         return
+    # Não acredito que seja a correta interpretação do enunciado,
+    # mas serve para ilustrar a independência dos eventos
+    # se assim o fosse.
+    if reposicao:
+        primeira_urna_escolhida.inserir_bola(primeira_bola_retirada)
     # O próximo passo do evento é embaralhar as urnas, o qual
     # pode ter diferentes interpretações.
     urnas: List[Urna] = embaralhar_urnas(urnas, funcao_embaralhamento)
-    segunda_bola_retirada = simular_retirada_bola(urnas)
-    if segunda_bola_retirada is not None:
-        # Incrementa o contador
-        contador.incrementar_total()
-        # Verifica se a bola retirada é preta
-        if segunda_bola_retirada.cor == Cor.PRETA:
-            contador.incrementar_total_pretas()
+    segunda_bola_retirada, _ = simular_retirada_bola(urnas)
+    # Incrementa o contador
+    contador.incrementar_total()
+    # Verifica se a bola retirada é preta
+    if segunda_bola_retirada.cor == Cor.PRETA:
+        contador.incrementar_total_pretas()
+
 
 def simular(numero_iteracoes: int,
-            funcao_embaralhamento: Callable[[List[Urna]], Urna]) -> None:
+            funcao_embaralhamento: Callable[[List[Urna]], Urna],
+            reposicao: bool = False) -> None:
     start_time = time.perf_counter()
     contador = criar_contador()
     for _ in range(numero_iteracoes):
-        simular_eventos(contador, funcao_embaralhamento)
+        simular_eventos(contador, funcao_embaralhamento, reposicao)
     print(f"Probabilidade de a segunda bola ser preta: {contador.get_total_pretas() / contador.get_total()}")
     end_time = time.perf_counter()
     total_time = end_time - start_time
@@ -166,9 +173,20 @@ def simular(numero_iteracoes: int,
 
 
 if __name__ == "__main__":
-    print("Simulação com embaralhamento aleatório")
+    print("Simulação com embaralhamento aleatório sem reposição")
     simular(numero_iteracoes=NUMERO_ITERACOES,
             funcao_embaralhamento=embaralhamento_aleatorio)
-    print("\nSimulação com embaralhamento redistribuído")
+
+    print("\nSimulação com embaralhamento redistribuído sem reposição")
     simular(numero_iteracoes=NUMERO_ITERACOES,
             funcao_embaralhamento=embaralhamento_redistribuido)
+
+    print("\nSimulação com embaralhamento aleatório com reposição")
+    simular(numero_iteracoes=NUMERO_ITERACOES,
+            funcao_embaralhamento=embaralhamento_aleatorio,
+            reposicao=True)
+
+    print("\nSimulação com embaralhamento redistribuído com reposição")
+    simular(numero_iteracoes=NUMERO_ITERACOES,
+            funcao_embaralhamento=embaralhamento_redistribuido,
+            reposicao=True)

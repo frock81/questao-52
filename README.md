@@ -22,10 +22,12 @@ A Questão Propriamente Dita:
 > (C) 1/6
 >
 > (D) 1/3.
-> 
+>
 > (E) 1/4.
 
-O gabarito preliminar da questão foi a letra "(A) 3/8". Como será demonstrado
+O gabarito preliminar da questão foi a letra "(A) 3/8". Como será demonstrado, a resposta correta é a alternativa "(D) 1/3". Portanto, solicita-se a alteração do gabarito da letra "A" para a letra "D".
+
+A demonstração será feita pela análise do espaço amostral e por meio de simulação computacional.
 
 
 ## Espaço amostral
@@ -50,17 +52,25 @@ Cem mil (100.000) iterações foram suficientes para o script em Python convergi
 
 ```
 $ time python simulacao.py
-Simulação com embaralhamento aleatório
-Probabilidade de a segunda bola ser preta: 0.333032751021802
-Tempo de execução: 7.2517607800109545 seconds
+Simulação com embaralhamento aleatório sem reposição
+Probabilidade de a segunda bola ser preta: 0.33328878970507664
+Tempo de execução: 0.6774859659926733 seconds
 
-Simulação com embaralhamento redistribuído
-Probabilidade de a segunda bola ser preta: 0.3335082994811873
-Tempo de execução: 10.43669317101012 seconds
+Simulação com embaralhamento redistribuído sem reposição
+Probabilidade de a segunda bola ser preta: 0.33242088396314595
+Tempo de execução: 1.0199562030029483 seconds
 
-real    0m17,753s
-user    0m17,719s
-sys     0m0,034s
+Simulação com embaralhamento aleatório com reposição
+Probabilidade de a segunda bola ser preta: 0.2501732132388211
+Tempo de execução: 0.733854796999367 seconds
+
+Simulação com embaralhamento redistribuído com reposição
+Probabilidade de a segunda bola ser preta: 0.25174331949323964
+Tempo de execução: 1.3112545519979903 seconds
+
+real    0m3,808s
+user    0m3,781s
+sys     0m0,026s
 ```
 
 Percebe-se que o valor converge para 0.33, equivalente a 1/3.
